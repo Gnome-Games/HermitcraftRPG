@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://db8yub4he3gh5"]
+
+[ext_resource type="Script" path="res://scripts/DroppedItem.gd" id="1_5vqrp"]
+[ext_resource type="Texture2D" uid="uid://bfir07rwqctmx" path="res://textures/items.png" id="2_jqe75"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsfwf"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnwr8"]
+size = Vector2(8, 8)
+
+[node name="DroppedItem" type="CharacterBody2D"]
+position = Vector2(-22, -3)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_5vqrp")
+
+[node name="ItemPickup" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="ItemPickupCollision" type="CollisionShape2D" parent="ItemPickup"]
+shape = SubResource("RectangleShape2D_fsfwf")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_jqe75")
+hframes = 15
+vframes = 3
+
+[node name="ItemCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nnwr8")
+
+[connection signal="body_entered" from="ItemPickup" to="." method="_on_item_pickup_body_entered"]

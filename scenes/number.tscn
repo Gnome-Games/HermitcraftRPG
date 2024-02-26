@@ -1,0 +1,56 @@
+[gd_scene load_steps=12 format=3 uid="uid://cc4ua4fgtjo24"]
+
+[ext_resource type="Texture2D" uid="uid://d0skq017gtukd" path="res://textures/hotbar/numbers/0.png" id="1_5xva7"]
+[ext_resource type="Texture2D" uid="uid://c8xkm35ed2r6r" path="res://textures/hotbar/numbers/1.png" id="2_bibbm"]
+[ext_resource type="Texture2D" uid="uid://dgvmog6xjr33y" path="res://textures/hotbar/numbers/2.png" id="3_7ug4w"]
+[ext_resource type="Texture2D" uid="uid://opwgiyqq1r0j" path="res://textures/hotbar/numbers/3.png" id="4_yrt7s"]
+[ext_resource type="Texture2D" uid="uid://du2aktaghxxiv" path="res://textures/hotbar/numbers/4.png" id="5_kjrvp"]
+[ext_resource type="Texture2D" uid="uid://1x6y10fxwuow" path="res://textures/hotbar/numbers/5.png" id="6_cc7ks"]
+[ext_resource type="Texture2D" uid="uid://cds3dlnmlc1aw" path="res://textures/hotbar/numbers/6.png" id="7_8aymc"]
+[ext_resource type="Texture2D" uid="uid://bljqcqlsrc1kk" path="res://textures/hotbar/numbers/7.png" id="8_v4mex"]
+[ext_resource type="Texture2D" uid="uid://bu1o05ie4v1dv" path="res://textures/hotbar/numbers/8.png" id="9_pg1u6"]
+[ext_resource type="Texture2D" uid="uid://bqg0xvy4vesoe" path="res://textures/hotbar/numbers/9.png" id="10_yh08e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5kyk8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5xva7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bibbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7ug4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yrt7s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kjrvp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cc7ks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8aymc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_v4mex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pg1u6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yh08e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Number" type="AnimatedSprite2D"]
+position = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_5kyk8")
+frame = 8
+offset = Vector2(0.5, 0)

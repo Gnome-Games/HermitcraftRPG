@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c31ppvtbr2lqu"]
+
+[ext_resource type="Script" path="res://scripts/CollectedItem.gd" id="1_xlt2t"]
+[ext_resource type="Texture2D" uid="uid://bfir07rwqctmx" path="res://textures/items.png" id="2_i66j7"]
+
+[node name="CollectedItem" type="Node2D"]
+position = Vector2(-13, 0)
+script = ExtResource("1_xlt2t")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_i66j7")
+hframes = 15
+vframes = 3
