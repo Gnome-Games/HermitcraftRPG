@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://52sb42o4mmg6"
-path="res://.godot/imported/WalkATrans.png-e08ec82bbd9926d0446a4d36694ba346.ctex"
+uid="uid://doivnstt41wau"
+path="res://.godot/imported/TorsoStraight.png-d9bfd640055e5e94869539ea65ca323b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player/body/WalkATrans.png"
-dest_files=["res://.godot/imported/WalkATrans.png-e08ec82bbd9926d0446a4d36694ba346.ctex"]
+source_file="res://textures/player/torso/TorsoStraight.png"
+dest_files=["res://.godot/imported/TorsoStraight.png-d9bfd640055e5e94869539ea65ca323b.ctex"]
 
 [params]
 

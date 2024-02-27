@@ -1,5 +1,7 @@
 extends TileMap
 
+const INITIAL_X = -13
+const ITEM_SPACING = 9
 const STACK_SIZE = [64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 1, 8, 64, 64]
 const BLOCK_LAYER = [1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 2, 2]
 const BLOCK_FRAME = ["grass", "dirt", "sand", "gravel", "stone", "coal_ore", "iron_ore", "diamond_ore", "leaves", "log", "stripped log", "planks", "crafting table", "barrel", "rod", "glass"]
@@ -19,6 +21,8 @@ var slot = 0
 @onready var inventory = get_node("../Player").inventory
 
 func _process(delta):
+	
+	_update_slot()
 	
 	if target != local_to_map(get_local_mouse_position()):
 		
@@ -92,3 +96,19 @@ func _update_player_sight():
 	
 	else:
 		$PlayerCursor.frame = 0
+
+func _update_slot():
+	
+	if Input.is_action_just_pressed("one"):
+		slot = 0
+		
+	elif Input.is_action_just_pressed("two"):
+		slot = 1
+		
+	elif Input.is_action_just_pressed("three"):
+		slot = 2
+		
+	elif Input.is_action_just_pressed("four"):
+		slot = 3
+	
+	get_node("../Player/HotBar/SelectedSlot").position.x = INITIAL_X + ITEM_SPACING * slot

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yygw5mrjwvl4"
-path="res://.godot/imported/WalkBCrit.png-1ddab5d8cfd7c89e0bfb33c89287f79b.ctex"
+uid="uid://81v2ecc86vt7"
+path="res://.godot/imported/TorsoSlant.png-c3a3cbb0909d8fece6e58cdbe274dab8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player/body/WalkBCrit.png"
-dest_files=["res://.godot/imported/WalkBCrit.png-1ddab5d8cfd7c89e0bfb33c89287f79b.ctex"]
+source_file="res://textures/player/torso/TorsoSlant.png"
+dest_files=["res://.godot/imported/TorsoSlant.png-c3a3cbb0909d8fece6e58cdbe274dab8.ctex"]
 
 [params]
 

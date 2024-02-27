@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5bawxgq1e88u"
-path="res://.godot/imported/WalkACrit.png-53caf5fcd49cb720476a2f7fab77b1e5.ctex"
+uid="uid://durdybsna5sl2"
+path="res://.godot/imported/ArmBack1.png-7f940c1c4f1181abc94be931797e2abf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player/body/WalkACrit.png"
-dest_files=["res://.godot/imported/WalkACrit.png-53caf5fcd49cb720476a2f7fab77b1e5.ctex"]
+source_file="res://textures/player/arms/ArmBack1.png"
+dest_files=["res://.godot/imported/ArmBack1.png-7f940c1c4f1181abc94be931797e2abf.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0i6p1wdu6xba"
-path="res://.godot/imported/WalkBTrans.png-94efc6f4b10ab68b4663ef75c5ea5774.ctex"
+uid="uid://bnfwpc5xfjrtq"
+path="res://.godot/imported/InventoryBig.png-284675414f750105bb15da73693009bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player/body/WalkBTrans.png"
-dest_files=["res://.godot/imported/WalkBTrans.png-94efc6f4b10ab68b4663ef75c5ea5774.ctex"]
+source_file="res://textures/InventoryBig.png"
+dest_files=["res://.godot/imported/InventoryBig.png-284675414f750105bb15da73693009bc.ctex"]
 
 [params]
 
