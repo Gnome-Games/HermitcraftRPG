@@ -14,13 +14,13 @@ var count
 
 func _ready():
 	position.x = slot * ITEM_SPACING + INITIAL_X
-	var itemFrame = tileMap.BLOCK_FRAME.find(tileMap.inventory[slot][0])
+	var itemFrame = tileMap.BLOCK_FRAME.find(tileMap.inventory[0][slot][0])
 	var atlas_y = floor( itemFrame / 8)
 	var atlas_x = itemFrame - atlas_y * 8
 	$ItemSprite.frame = atlas_y * 30 + atlas_x * 2
 
 func _process(delta):
-	count = tileMap.inventory[slot][1]
+	count = tileMap.inventory[0][slot][1]
 	
 	if count == 0:
 		queue_free()

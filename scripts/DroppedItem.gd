@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-const COLLECTED_ITEM = preload("res://scenes/collected_item.tscn")
-
 const LOOP_TIME = 3000.0
 const LOOP_DISTANCE = 10.0
 const GRAVITY = 300.0
@@ -36,18 +34,16 @@ func _on_item_pickup_body_entered(body):
 	var blockFrame = atlas_x + atlas_y * 8
 	
 	for slotIndex in range(body.inventory.size()):
-		var slot = body.inventory[slotIndex]
+		var slot = body.inventory[0][slotIndex]
 		
 		if slot[0] == get_parent().BLOCK_FRAME[blockFrame] and slot[1] < get_parent().STACK_SIZE[blockFrame]:
-			body.inventory[slotIndex][1] += 1
+			body.inventory[0][slotIndex][1] += 1
 			queue_free()
 			break
 			
 		elif slot[0] == "air":
 			
-			body.inventory[slotIndex] = [get_parent().BLOCK_FRAME[blockFrame], 1]
-			var item = COLLECTED_ITEM.instantiate()
-			item.slot = slotIndex
-			get_node("../../Player/HotBar").add_child(item)
+			body.inventory[0][slotIndex] = [get_parent().BLOCK_FRAME[blockFrame], 1]
+			get_node("../../Player")._update_hotbar()
 			queue_free()
 			break

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://hwdny0eydrfo"]
+[gd_scene load_steps=57 format=3 uid="uid://hwdny0eydrfo"]
 
 [ext_resource type="Texture2D" uid="uid://ne8eq3r5h03d" path="res://textures/Tileset.png" id="1_3yxaf"]
 [ext_resource type="Script" path="res://scripts/notes.gd" id="1_ghh82"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://24btcvq6gm1w" path="res://textures/player/arms/ArmForward1.png" id="28_irxdh"]
 [ext_resource type="Texture2D" uid="uid://cnlu5vmjpq56p" path="res://textures/player/arms/ArmForward2.png" id="29_ien2t"]
 [ext_resource type="Texture2D" uid="uid://bnfwpc5xfjrtq" path="res://textures/InventoryBig.png" id="30_0godr"]
+[ext_resource type="Script" path="res://scripts/InventoryItem.gd" id="30_f6bfj"]
 [ext_resource type="PackedScene" uid="uid://m12l0n7tdvsp" path="res://3Dstuff/model.gltf" id="31_chgtu"]
 [ext_resource type="Script" path="res://scripts/MumboModel.gd" id="32_tp74f"]
 
@@ -178,6 +179,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nx0k7"]
+size = Vector2(12, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jh6lv"]
 size = Vector2(4, 23)
@@ -917,6 +921,9 @@ _data = {
 "Walk": SubResource("Animation_lg6pe")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6nph"]
+size = Vector2(140, 68)
+
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_ghh82")
 
@@ -937,6 +944,13 @@ script = ExtResource("2_ph7s6")
 [node name="PlayerCursor" type="AnimatedSprite2D" parent="TileMap"]
 position = Vector2(-55, -27)
 sprite_frames = SubResource("SpriteFrames_nntc7")
+
+[node name="MobDetector" type="Area2D" parent="TileMap/PlayerCursor"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="MobDecterArea" type="CollisionShape2D" parent="TileMap/PlayerCursor/MobDetector"]
+shape = SubResource("RectangleShape2D_nx0k7")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-38, -12)
@@ -998,10 +1012,18 @@ position = Vector2(0, -32)
 zoom = Vector2(4, 4)
 
 [node name="Menu" type="Node2D" parent="Player/Camera"]
+visible = false
 z_index = 10
+script = ExtResource("30_f6bfj")
 
 [node name="Inventory" type="Sprite2D" parent="Player/Camera/Menu"]
 texture = ExtResource("30_0godr")
+
+[node name="MouseDetecter" type="Area2D" parent="Player/Camera/Menu/Inventory"]
+
+[node name="MouseDetecterArea" type="CollisionShape2D" parent="Player/Camera/Menu/Inventory/MouseDetecter"]
+position = Vector2(36, 24)
+shape = SubResource("RectangleShape2D_v6nph")
 
 [node name="3DPlayer" type="SubViewportContainer" parent="Player/Camera/Menu"]
 anchors_preset = 15
@@ -1018,7 +1040,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="Player/Camera/Menu/3DPlayer"]
 handle_input_locally = false
 size = Vector2i(68, 116)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="MumboModel" parent="Player/Camera/Menu/3DPlayer/SubViewport" instance=ExtResource("31_chgtu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -1038,3 +1060,8 @@ offset = Vector2(0.5, 0)
 [node name="SelectedSlot" type="Sprite2D" parent="Player/HotBar"]
 position = Vector2(-13, 0)
 texture = ExtResource("23_hyqot")
+
+[connection signal="body_entered" from="TileMap/PlayerCursor/MobDetector" to="TileMap" method="_on_mob_detecter_body_entered"]
+[connection signal="body_exited" from="TileMap/PlayerCursor/MobDetector" to="TileMap" method="_on_mob_detecter_body_exited"]
+[connection signal="mouse_entered" from="Player/Camera/Menu/Inventory/MouseDetecter" to="Player/Camera/Menu" method="_on_mouse_detecter_mouse_entered"]
+[connection signal="mouse_exited" from="Player/Camera/Menu/Inventory/MouseDetecter" to="Player/Camera/Menu" method="_on_mouse_detecter_mouse_exited"]
