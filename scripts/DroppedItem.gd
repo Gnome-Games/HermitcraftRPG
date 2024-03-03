@@ -3,14 +3,14 @@ extends CharacterBody2D
 const LOOP_TIME = 3000.0
 const LOOP_DISTANCE = 10.0
 const GRAVITY = 300.0
-
-var itemFrame
+const ITEMS = ["grass", "dirt", "sand", "gravel", "stone", "coal_ore", "iron_ore", "diamond_ore", "leaves", "log", "stripped_log", "plank", "crafting_table", "barrel", "post", "glass", "flint", "coal", "diamond", "apple", "sapling", "stone_sword", "iron_sword", "diamond_sword"]
+ 
+var item
 var startTime
 
 func _ready():
-	
 	startTime = Time.get_ticks_msec()
-	$ItemSprite.frame = itemFrame
+	$ItemSprite.frame = ITEMS.find(item)
 
 func _process(delta):
 	_move_sprite()
@@ -29,21 +29,25 @@ func _ease_in_out_sin(progress):
 
 func _on_item_pickup_body_entered(body):
 	
-	var atlas_y = floor(itemFrame / 30)
-	var atlas_x = (itemFrame - atlas_y * 30) / 2
-	var blockFrame = atlas_x + atlas_y * 8
+	var done = false
 	
-	for slotIndex in range(body.inventory.size()):
-		var slot = body.inventory[0][slotIndex]
+	for row in range(body.inventory.size()):
 		
-		if slot[0] == get_parent().BLOCK_FRAME[blockFrame] and slot[1] < get_parent().STACK_SIZE[blockFrame]:
-			body.inventory[0][slotIndex][1] += 1
-			queue_free()
+		if done:
 			break
+		
+		for index in range(body.inventory[row].size()):
+			var slot = body.inventory[row][index]
 			
-		elif slot[0] == "air":
+			if slot[0] == item and slot[1] < get_parent().STACK_SIZE[ITEMS.find(item)]:
+				body.inventory[row][index][1] += 1
+				queue_free()
+				done = true
+				break
 			
-			body.inventory[0][slotIndex] = [get_parent().BLOCK_FRAME[blockFrame], 1]
-			get_node("../../Player")._update_hotbar()
-			queue_free()
-			break
+			elif slot[0] == "air":
+				body.inventory[row][index] = [item, 1]
+				get_node("../../Player")._update_hotbar()
+				queue_free()
+				done = true
+				break

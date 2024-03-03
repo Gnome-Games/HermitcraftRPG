@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmn7pm5yj35wb"]
 
-[ext_resource type="Texture2D" uid="uid://ne8eq3r5h03d" path="res://textures/Tileset.png" id="1_nscjc"]
+[ext_resource type="Texture2D" uid="uid://ct5seysn8qj5u" path="res://textures/InventoryItems.png" id="1_ciwsx"]
 [ext_resource type="Script" path="res://scripts/InventoryItem (2).gd" id="2_secnr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hb2cp"]
 size = Vector2(14, 14)
 
 [node name="InventoryItem" type="Sprite2D"]
-texture = ExtResource("1_nscjc")
-hframes = 15
+texture = ExtResource("1_ciwsx")
+hframes = 8
 vframes = 3
 script = ExtResource("2_secnr")
 

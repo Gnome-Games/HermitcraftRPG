@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://db8yub4he3gh5"]
 
 [ext_resource type="Script" path="res://scripts/DroppedItem.gd" id="1_5vqrp"]
-[ext_resource type="Texture2D" uid="uid://bfir07rwqctmx" path="res://textures/items.png" id="2_jqe75"]
+[ext_resource type="Texture2D" uid="uid://bc2lq4k74ulcq" path="res://textures/FloorItems.png" id="2_txvr0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsfwf"]
 size = Vector2(12, 12)
@@ -23,8 +23,8 @@ collision_mask = 8
 shape = SubResource("RectangleShape2D_fsfwf")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_jqe75")
-hframes = 15
+texture = ExtResource("2_txvr0")
+hframes = 8
 vframes = 3
 
 [node name="ItemCollision" type="CollisionShape2D" parent="."]

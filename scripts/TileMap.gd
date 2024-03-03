@@ -2,10 +2,11 @@ extends TileMap
 
 const INITIAL_X = -13
 const ITEM_SPACING = 9
-const STACK_SIZE = [64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 1, 8, 64, 64]
+const STACK_SIZE = [64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 64, 1, 8, 64, 64, 64, 64, 64, 64, 64, 1, 1, 1]
 const BLOCK_LAYER = [1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 2, 2]
-const BLOCK_FRAME = ["grass", "dirt", "sand", "gravel", "stone", "coal_ore", "iron_ore", "diamond_ore", "leaves", "log", "stripped log", "planks", "crafting table", "barrel", "rod", "glass"]
-const PLACEABLE_ITEMS = ["grass", "dirt", "sand", "gravel", "stone", "coal_ore", "iron_ore", "diamond_ore", "leaves", "log", "stripped log", "planks", "crafting table", "barrel", "rod", "glass"]
+const BLOCK_FRAME = ["grass", "dirt", "sand", "gravel", "stone", "coal_ore", "iron_ore", "diamond_ore", "leaves", "log", "stripped_log", "planks", "crafting_table", "barrel", "post", "glass"]
+const BLOCK_DROPS = {"grass": ["dirt"], "gravel": ["gravel", "gravel", "flint"], "coal_ore": ["coal"], "diamond_ore": ["diamond"], "leaves": [ "apple", "sapling", "sapling", "air", "air", "air", "air"], "glass": ["air"]}
+const PLACEABLE_ITEMS = ["grass", "dirt", "sand", "gravel", "stone", "coal_ore", "iron_ore", "diamond_ore", "leaves", "log", "stripped_log", "planks", "crafting_table", "barrel", "post", "glass"]
 const DROPPED_ITEM = preload("res://scenes/dropped_item.tscn")
 const BREAK_DURATION = [.5, .5, .5, .5, 1.5, 1.5, 2, 2.5, .4, .8, .8, .8, .8, .8, .8, .3]
 const LAYERS = 3
@@ -89,9 +90,15 @@ func _process(delta):
 				miningStart = Time.get_ticks_msec()
 				
 				var item = DROPPED_ITEM.instantiate()
-				item.itemFrame = targetAtlas.x * 2 + targetAtlas.y * 30
+				item.item = BLOCK_FRAME[targetAtlas.x + targetAtlas.y * 8]
+
+				if BLOCK_DROPS.keys().has(item.item):
+					item.item = BLOCK_DROPS[item.item].pick_random()
+				
 				item.position = target * BLOCK_SPACING
-				add_child(item)
+				
+				if item.item != "air":
+					add_child(item)
 			
 
 func _update_player_sight():

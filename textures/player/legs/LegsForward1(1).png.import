@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfir07rwqctmx"
-path="res://.godot/imported/items.png-e662b834337e04609fc4906556fcd970.ctex"
+uid="uid://cgn3q2y4agxv6"
+path="res://.godot/imported/LegsForward1(1).png-286740135d5f51cc85dead2965810af5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/items.png"
-dest_files=["res://.godot/imported/items.png-e662b834337e04609fc4906556fcd970.ctex"]
+source_file="res://textures/player/legs/LegsForward1(1).png"
+dest_files=["res://.godot/imported/LegsForward1(1).png-286740135d5f51cc85dead2965810af5.ctex"]
 
 [params]
 

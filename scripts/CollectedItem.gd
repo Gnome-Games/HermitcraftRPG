@@ -6,7 +6,7 @@ const NUMBER = preload("res://scenes/number.tscn")
 const NUMBER_Y = 2
 const INITIAL_NUMBER_X = 2
 const NUMBER_SPACING = -3
-
+const ITEMS = ["grass", "dirt", "sand", "gravel", "stone", "coal_ore", "iron_ore", "diamond_ore", "leaves", "log", "stripped_log", "plank", "crafting_table", "barrel", "post", "glass", "flint", "coal", "diamond", "apple", "sapling", "stone_sword", "iron_sword", "diamond_sword"]
 var slot
 var count
 
@@ -14,10 +14,7 @@ var count
 
 func _ready():
 	position.x = slot * ITEM_SPACING + INITIAL_X
-	var itemFrame = tileMap.BLOCK_FRAME.find(tileMap.inventory[0][slot][0])
-	var atlas_y = floor( itemFrame / 8)
-	var atlas_x = itemFrame - atlas_y * 8
-	$ItemSprite.frame = atlas_y * 30 + atlas_x * 2
+	$ItemSprite.frame = ITEMS.find(tileMap.inventory[0][slot][0])
 
 func _process(delta):
 	count = tileMap.inventory[0][slot][1]
