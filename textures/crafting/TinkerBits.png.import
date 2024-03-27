@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct5seysn8qj5u"
-path="res://.godot/imported/InventoryItems.png-a46f6731b87ca44b819ec380d4f54192.ctex"
+uid="uid://b3odghahvhj0m"
+path="res://.godot/imported/TinkerBits.png-915d87f0a156735ac1437d5357d45ae8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/InventoryItems.png"
-dest_files=["res://.godot/imported/InventoryItems.png-a46f6731b87ca44b819ec380d4f54192.ctex"]
+source_file="res://textures/crafting/TinkerBits.png"
+dest_files=["res://.godot/imported/TinkerBits.png-915d87f0a156735ac1437d5357d45ae8.ctex"]
 
 [params]
 

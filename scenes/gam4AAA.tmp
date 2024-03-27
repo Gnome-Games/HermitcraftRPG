@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://hwdny0eydrfo"]
+[gd_scene load_steps=59 format=3 uid="uid://hwdny0eydrfo"]
 
 [ext_resource type="Texture2D" uid="uid://ne8eq3r5h03d" path="res://textures/Tileset.png" id="1_3yxaf"]
 [ext_resource type="Script" path="res://scripts/notes.gd" id="1_ghh82"]
@@ -30,9 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://cgf11osffttax" path="res://textures/player/arms/ArmBack2.png" id="25_140hq"]
 [ext_resource type="Texture2D" uid="uid://durdybsna5sl2" path="res://textures/player/arms/ArmBack1.png" id="26_drg7d"]
 [ext_resource type="Texture2D" uid="uid://bqn40kj3yhjph" path="res://textures/player/arms/ArmInt.png" id="27_ern64"]
-[ext_resource type="Texture2D" uid="uid://b1p2moconwyvg" path="res://textures/player/arms/ArmForward.png" id="28_5ot6b"]
 [ext_resource type="Texture2D" uid="uid://24btcvq6gm1w" path="res://textures/player/arms/ArmForward1.png" id="28_irxdh"]
-[ext_resource type="Script" path="res://scripts/HeldInvention.gd" id="29_5isn1"]
 [ext_resource type="Texture2D" uid="uid://cnlu5vmjpq56p" path="res://textures/player/arms/ArmForward2.png" id="29_ien2t"]
 [ext_resource type="Script" path="res://scripts/InventoryItem.gd" id="30_f6bfj"]
 [ext_resource type="Texture2D" uid="uid://c72h4crxmjqfy" path="res://textures/hotbar/FinalInventory.png" id="31_2rs5t"]
@@ -186,12 +184,6 @@ size = Vector2(12, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2gva"]
 size = Vector2(37, 37)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_726ri"]
-size = Vector2(21, 39)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lb6m"]
-size = Vector2(10, 10)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_d4faa"]
 animations = [{
 "frames": [{
@@ -269,9 +261,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("29_ien2t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_5ot6b")
 }],
 "loop": true,
 "name": &"walk",
@@ -391,33 +380,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Vector2(2.5, 1), Vector2(3.5, 0.5)]
-}
-
-[sub_resource type="Animation" id="Animation_l8j75"]
-resource_name = "Holding"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Torso/FrontArm:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Torso/FrontArm:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(4, -1.5)]
 }
 
 [sub_resource type="Animation" id="Animation_fmq5t"]
@@ -588,7 +550,6 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8ll63"]
 _data = {
 "Action": SubResource("Animation_sd81y"),
-"Holding": SubResource("Animation_l8j75"),
 "RESET": SubResource("Animation_fmq5t"),
 "SwordCooldownStill": SubResource("Animation_eryk5"),
 "SwordCooldownWalk": SubResource("Animation_dhsof"),
@@ -692,30 +653,17 @@ shape = SubResource("RectangleShape2D_nx0k7")
 
 [node name="TinkerBenchMenu" type="Sprite2D" parent="TileMap"]
 visible = false
-z_index = 3
+z_index = 2
 position = Vector2(63, -43)
 texture = ExtResource("13_j3tm7")
 offset = Vector2(0, 0.5)
 script = ExtResource("14_nb4lf")
 
-[node name="MouseDetectorGrid" type="Area2D" parent="TileMap/TinkerBenchMenu"]
-position = Vector2(5, 0)
+[node name="MouseDetector" type="Area2D" parent="TileMap/TinkerBenchMenu"]
 
-[node name="MouseDetectorArea" type="CollisionShape2D" parent="TileMap/TinkerBenchMenu/MouseDetectorGrid"]
-position = Vector2(-0.5, 0.5)
+[node name="MouseDetectorArea" type="CollisionShape2D" parent="TileMap/TinkerBenchMenu/MouseDetector"]
+position = Vector2(-9.5, 0.5)
 shape = SubResource("RectangleShape2D_y2gva")
-
-[node name="MouseDetectorResources" type="Area2D" parent="TileMap/TinkerBenchMenu"]
-
-[node name="MouseDetectorArea" type="CollisionShape2D" parent="TileMap/TinkerBenchMenu/MouseDetectorResources"]
-position = Vector2(-31.5, 0.5)
-shape = SubResource("RectangleShape2D_726ri")
-
-[node name="MouseDetectorOutput" type="Area2D" parent="TileMap/TinkerBenchMenu"]
-
-[node name="MouseDetectorArea" type="CollisionShape2D" parent="TileMap/TinkerBenchMenu/MouseDetectorOutput"]
-position = Vector2(37, 14)
-shape = SubResource("RectangleShape2D_2lb6m")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 z_index = -1
@@ -754,11 +702,6 @@ frame = 2
 offset = Vector2(0.5, 2)
 flip_h = true
 
-[node name="HeldInvention" type="Node2D" parent="Player/Torso/FrontArm"]
-visible = false
-z_index = -1
-script = ExtResource("29_5isn1")
-
 [node name="Head" type="AnimatedSprite2D" parent="Player/Torso"]
 position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_i83hc")
@@ -790,7 +733,7 @@ zoom = Vector2(4, 4)
 
 [node name="HotBar" type="Sprite2D" parent="Player"]
 z_index = 1
-position = Vector2(0, -30)
+position = Vector2(0, -25)
 texture = ExtResource("31_2rs5t")
 offset = Vector2(0.5, -6.5)
 script = ExtResource("30_f6bfj")
@@ -808,11 +751,7 @@ shape = SubResource("RectangleShape2D_v6nph")
 
 [connection signal="body_entered" from="TileMap/PlayerCursor/MobDetector" to="TileMap" method="_on_mob_detecter_body_entered"]
 [connection signal="body_exited" from="TileMap/PlayerCursor/MobDetector" to="TileMap" method="_on_mob_detecter_body_exited"]
-[connection signal="mouse_entered" from="TileMap/TinkerBenchMenu/MouseDetectorGrid" to="TileMap/TinkerBenchMenu" method="_on_mouse_detector_grid_mouse_entered"]
-[connection signal="mouse_exited" from="TileMap/TinkerBenchMenu/MouseDetectorGrid" to="TileMap/TinkerBenchMenu" method="_on_mouse_detector_grid_mouse_exited"]
-[connection signal="mouse_entered" from="TileMap/TinkerBenchMenu/MouseDetectorResources" to="TileMap/TinkerBenchMenu" method="_on_mouse_detector_resources_mouse_entered"]
-[connection signal="mouse_exited" from="TileMap/TinkerBenchMenu/MouseDetectorResources" to="TileMap/TinkerBenchMenu" method="_on_mouse_detector_resources_mouse_exited"]
-[connection signal="mouse_entered" from="TileMap/TinkerBenchMenu/MouseDetectorOutput" to="TileMap/TinkerBenchMenu" method="_on_mouse_detector_output_mouse_entered"]
-[connection signal="mouse_exited" from="TileMap/TinkerBenchMenu/MouseDetectorOutput" to="TileMap/TinkerBenchMenu" method="_on_mouse_detector_output_mouse_exited"]
+[connection signal="mouse_entered" from="TileMap/TinkerBenchMenu/MouseDetector" to="TileMap/TinkerBenchMenu" method="_on_mouse_detector_mouse_entered"]
+[connection signal="mouse_exited" from="TileMap/TinkerBenchMenu/MouseDetector" to="TileMap/TinkerBenchMenu" method="_on_mouse_detector_mouse_exited"]
 [connection signal="mouse_entered" from="Player/HotBar/MouseDetecter" to="Player/HotBar" method="_on_mouse_detecter_mouse_entered"]
 [connection signal="mouse_exited" from="Player/HotBar/MouseDetecter" to="Player/HotBar" method="_on_mouse_detecter_mouse_exited"]

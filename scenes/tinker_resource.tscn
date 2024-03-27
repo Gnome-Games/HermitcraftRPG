@@ -1,27 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://c31ppvtbr2lqu"]
+[gd_scene load_steps=4 format=3 uid="uid://cq5o75152ttm5"]
 
-[ext_resource type="Script" path="res://scripts/CollectedItem.gd" id="1_xlt2t"]
-[ext_resource type="Texture2D" uid="uid://bc2lq4k74ulcq" path="res://textures/FloorItems.png" id="2_602w5"]
+[ext_resource type="Script" path="res://scripts/tinker_resource.gd" id="1_d7cjx"]
+[ext_resource type="Texture2D" uid="uid://djprfymctqtvv" path="res://textures/crafting/TinkerResources.png" id="2_a6vn7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmt0a"]
 size = Vector2(8, 8)
 
-[node name="CollectedItem" type="Node2D"]
+[node name="TinkerResource" type="Node2D"]
 position = Vector2(-13, 0)
-script = ExtResource("1_xlt2t")
+script = ExtResource("1_d7cjx")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_602w5")
-hframes = 8
-vframes = 3
-frame = 12
+texture = ExtResource("2_a6vn7")
+offset = Vector2(4, 4)
+hframes = 6
+vframes = 2
+frame = 10
 
 [node name="mouseDetecter" type="Area2D" parent="."]
 
 [node name="detectionArea" type="CollisionShape2D" parent="mouseDetecter"]
 shape = SubResource("RectangleShape2D_fmt0a")
-
-[node name="TidBits" type="Node2D" parent="."]
 
 [connection signal="mouse_entered" from="mouseDetecter" to="." method="_on_mouse_detecter_mouse_entered"]
 [connection signal="mouse_exited" from="mouseDetecter" to="." method="_on_mouse_detecter_mouse_exited"]

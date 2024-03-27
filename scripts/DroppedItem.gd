@@ -39,7 +39,7 @@ func _on_item_pickup_body_entered(body):
 		for index in range(body.inventory[row].size()):
 			var slot = body.inventory[row][index]
 			
-			if slot[0] == item and slot[1] < get_parent().STACK_SIZE[ITEMS.find(item)]:
+			if slot[0] == item and slot[1] < 64:
 				body.inventory[row][index][1] += 1
 				queue_free()
 				done = true

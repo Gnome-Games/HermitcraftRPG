@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://o0vr86k6x05d"]
+
+[ext_resource type="Texture2D" uid="uid://c81htgp6n7egr" path="res://textures/crafting/TinyTinkerBits.png" id="1_j8qta"]
+
+[node name="spriteTidBit" type="Sprite2D"]
+texture = ExtResource("1_j8qta")
+hframes = 4
+vframes = 4
